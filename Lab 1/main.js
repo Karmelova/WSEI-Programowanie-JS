@@ -1,29 +1,42 @@
 // notatnik z zajęć
-const liczby = document.querySelectorAll(".liczba");
-const wynikiPojemnik = document.querySelector('#wyniki')
+let numbers = document.querySelectorAll('.input-number')
+const resultDiv = document.querySelector('#results')
+const inputContainer = document.getElementById('input-container')
 
-function calculateValues(){
-    let sum = 0;
-    let min = Number.MAX_VALUE;
-    let max = Number.MIN_VALUE;
+function addField () {
+  let newInput = document.createElement('input')
+  newInput.setAttribute('type', 'text')
+  newInput.classList.add('input-number')
+  inputContainer.appendChild(newInput)
+  newInput.addEventListener('input', () => calculateValues());
+}
 
-    for (const input of liczby) {
-        const value = parseFloat(input.value);
-        if (!isNaN(value)) {
-            sum += value;
-            min = Math.min(min, value);
-            max = Math.max(max, value);
-        }
+// obliczanie wartości z wszystkich pól teksowych. Pole wylicza sumę, średnią, maksymalną podaną liczbę oraz minimalną podaną liczbę
+function calculateValues () {
+  numbers = document.querySelectorAll('.input-number')
+  let sum = 0
+  let min = Number.MAX_VALUE
+  let max = Number.MIN_VALUE
+
+  for (const input of numbers) {
+    const value = parseFloat(input.value)
+    if (!isNaN(value)) {
+      sum += value
+      min = Math.min(min, value)
+      max = Math.max(max, value)
     }
-    const average = sum / liczby.length;
+  }
+  const average = sum / numbers.length
 
-    wynikiPojemnik.innerHTML = `
+  resultDiv.innerHTML = `
     <p>Suma: ${sum}</p>
     <p>Średnia: ${average}</p>
     <p>Min: ${min}</p>
     <p>Max: ${max}</p>
 `
-liczby.forEach((element, index) => {
-    console.log(`Element ${index + 1}: ${element.value}`);
-  });
 }
+
+//wykrywanie zmian w polach teksowych i wywołanie funkcji obliczającej wartości
+numbers.forEach(element =>
+  element.addEventListener('input', () => calculateValues())
+)
