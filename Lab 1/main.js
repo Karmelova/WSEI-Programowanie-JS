@@ -9,6 +9,19 @@ function addField () {
   newInput.classList.add('input-number')
   inputContainer.appendChild(newInput)
   newInput.addEventListener('input', () => calculateValues());
+  let removeButton = document.createElement('button');
+  removeButton.textContent = "X";
+  removeButton.onclick = function() {
+    removeField(newInput, removeButton);
+  };
+  inputContainer.appendChild(removeButton);
+}
+
+function removeField(button) {
+  const inputToRemove = button.previousElementSibling
+  inputContainer.removeChild(inputToRemove)
+  inputContainer.removeChild(button)
+  calculateValues()
 }
 
 // obliczanie wartości z wszystkich pól teksowych. Pole wylicza sumę, średnią, maksymalną podaną liczbę oraz minimalną podaną liczbę
