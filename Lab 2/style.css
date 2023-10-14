@@ -1,17 +1,33 @@
-#slider {
-    width: 600px;
-    height: 400px;
-    margin: 100px auto 0 auto;
+body{
+    margin: 0;
+    top: 20;
+    background-color:rgb(24, 29, 29);
+}
+
+#slider-container {
+    height: 90vh;
+    width: 100%;
     overflow: hidden;
 }
-#slider .slides {
+#slider-container .slides {
+    width: 100%;
+    height: auto;
     display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: row;
+    
     animation-name: pociag-w-lewo;
     animation-duration: 4s;
     animation-delay: 1s;
     animation-timing-function: ease-in-out;
 }
 
+.slides img{
+    position: absolute;
+    min-width: 100%;
+    height: auto;
+}
 @keyframes pociag-w-lewo {
     0% {
         transform: translateX(0);
