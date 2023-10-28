@@ -6,6 +6,21 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Drum Kit</h1>
+    <div>
+        <button onclick="switchRecordingChannel(0)">Channel 1</button>
+        <button onclick="switchRecordingChannel(1)">Channel 2</button>
+        <button onclick="switchRecordingChannel(2)">Channel 3</button>
+        <button onclick="switchRecordingChannel(3)">Channel 4</button>
+    </div>
+    <div>
+        <button onclick="playRecordedChannel(0)">Play Channel 1</button>
+        <button onclick="playRecordedChannel(1)">Play Channel 2</button>
+        <button onclick="playRecordedChannel(2)">Play Channel 3</button>
+        <button onclick="playRecordedChannel(3)">Play Channel 4</button>
+        <button onclick="playAllRecordedChannel()">Play All Recorded Chanels</button>
+
+    </div>
     <audio src="./sounds/clap.wav" controls id="s1"></audio>
     <audio src="./sounds/hihat.wav" controls id="s2"></audio>
     <audio src="./sounds/boom.wav" controls id="s3"></audio>
