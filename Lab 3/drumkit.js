@@ -22,8 +22,10 @@ function onKeyPress(event) {
     recordSound(sound)
 }
 function playSound(sound) {
-    sound.currentTime = 0
-    sound.play()
+    if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+    }
 }
 
 function recordSound(sound) {
@@ -34,6 +36,10 @@ function recordSound(sound) {
         recordingStartTime = Date.now();
         setTimeout(stopRecording, MAX_RECORDING_DURATION);
     }
+}
+
+function stopRecording() {
+    recordingStartTime = null;
 }
 
 function switchRecordingChannel(channelIndex) {
@@ -53,7 +59,9 @@ function playRecordedChannel(channelIndex) {
 }
 
 function playAllRecordedChannels() {
-    for (const channel of recordedChannels) {
-        playRecordedChannel(channel);
+    for (let i = 0; i < recordedChannels.length; i++) {
+        if (recordedChannels[i].length > 0) {
+            playRecordedChannel(i);
+        }
     }
 }
