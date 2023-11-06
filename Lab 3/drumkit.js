@@ -15,12 +15,22 @@ const KeyToSound = {
     'k': document.querySelector('#s8'),
     'l': document.querySelector('#s9'),
 }
+document.addEventListener('keydown', onKeyPress);
+document.addEventListener('keyup', onKeyRelease);
+
 
 function onKeyPress(event) {
     const sound = KeyToSound[event.key]
-    playSound(sound)
-    recordSound(sound)
+    playSound(sound);
+    sound.parentElement.classList.add("pressed");
+    
 }
+function onKeyRelease(event) {
+    const sound = KeyToSound[event.key];
+    sound.parentElement.classList.remove("pressed");
+}
+
+
 function playSound(sound) {
     if (sound) {
         sound.currentTime = 0;
@@ -42,9 +52,10 @@ function stopRecording() {
     recordingStartTime = null;
 }
 
-function switchRecordingChannel(channelIndex) {
+function startRecordingChannel(channelIndex) {
     recordingChannel = channelIndex;
     recordingStartTime = null;
+    recordSound(this);
 }
 
 function playRecordedChannel(channelIndex) {
