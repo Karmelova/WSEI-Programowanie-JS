@@ -21,22 +21,21 @@ document.addEventListener('keyup', onKeyRelease);
 
 function onKeyPress(event) {
     const sound = KeyToSound[event.key]
-    playSound(sound);
+    if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+    }
     sound.parentElement.classList.add("pressed");
     
 }
+
 function onKeyRelease(event) {
     const sound = KeyToSound[event.key];
     sound.parentElement.classList.remove("pressed");
 }
 
 
-function playSound(sound) {
-    if (sound) {
-        sound.currentTime = 0;
-        sound.play();
-    }
-}
+
 
 function recordSound(sound) {
     const recordedChannel = recordedChannels[recordingChannel];
