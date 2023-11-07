@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>JS Drum Kit</title>
-        <script src="https://kit.fontawesome.com/8c63231481.js"
+        <script
+            src="https://kit.fontawesome.com/8c63231481.js"
             crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
-        <h1><i class="fa-solid fa-drum fa-lg" style="color: #ffffff;"></i> Drumkit</h1>
+        <h1>
+            <i class="fa-solid fa-drum fa-lg" style="color: #ffffff"></i>
+            Drumkit
+        </h1>
         <section class="container drumkit">
             <div class="drum-key">
                 <span class="key-button">A</span>
@@ -65,10 +68,11 @@
                 CHANNEL 1
                 <p class="controls">
                     <button id="channel1Rec" onclick="recordChannel(1)">
-                        <i class="fa-solid fa-circle icon record "></i>
+                        <i class="fa-solid fa-circle icon record"></i>
                     </button>
-                    <button id="channel1Play" class="hidden" onclick="playChannel(1)">
-                        <i class="fa-solid fa-circle-play icon play "></i>
+                    <button id="channel1Play" class="hidden"
+                        onclick="playChannel(1)">
+                        <i class="fa-solid fa-circle-play icon play"></i>
                     </button>
                 </p>
             </div>
@@ -76,9 +80,10 @@
                 CHANNEL 2
                 <p class="controls">
                     <button id="channel2Rec" onclick="recordChannel(2)">
-                        <i class=" icon record fa-solid fa-circle"></i>
+                        <i class="icon record fa-solid fa-circle"></i>
                     </button>
-                    <button id="channel2Play" class="hidden" onclick="playChannel(2)">
+                    <button id="channel2Play" class="hidden"
+                        onclick="playChannel(2)">
                         <i class="fa-solid fa-circle-play icon play"></i>
                     </button>
                 </p>
@@ -87,9 +92,10 @@
                 CHANNEL 3
                 <p class="controls">
                     <button id="channel3Rec" onclick="recordChannel(3)">
-                        <i class=" icon record fa-solid fa-circle"></i>
+                        <i class="icon record fa-solid fa-circle"></i>
                     </button>
-                    <button id="channel3Play" class="hidden" onclick="playChannel(3)">
+                    <button id="channel3Play" class="hidden"
+                        onclick="playChannel(3)">
                         <i class="fa-solid fa-circle-play icon play"></i>
                     </button>
                 </p>
@@ -98,14 +104,16 @@
                 CHANNEL 4
                 <p class="controls">
                     <button id="channel4Rec" onclick="recordChannel(4)">
-                        <i class=" icon record fa-solid fa-circle"></i>
+                        <i class="icon record fa-solid fa-circle"></i>
                     </button>
-                    <button id="channel4Play" class="hidden" onclick="playChannel(4)">
+                    <button id="channel4Play" class="hidden"
+                        onclick="playChannel(4)">
                         <i class="fa-solid fa-circle-play icon play"></i>
                     </button>
                 </p>
             </div>
         </section>
+        <button id="playAllBtn" onclick="playAllChannels()">Play all channels together</button>
         <script src="drumkit.js"></script>
     </body>
 </html>

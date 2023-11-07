@@ -20,6 +20,7 @@ h1 {
   font-size: 4rem;
 }
 
+
 .container {
   min-height: 30%;
   display: flex;
@@ -101,9 +102,10 @@ h1 {
   color: green;
 }
 
-button {
+ button {
   background-color: transparent;
   border: none;
+  color: black;
 }
 
 .hidden {
@@ -129,4 +131,12 @@ button {
   font-weight: bold;
   margin-left: 5px;
   display: inline-block;
+}
+
+#playAllBtn{
+  background-color: white;
+  padding: 10px;
+  border-radius: 0.5em;
+  color: black;
+  font-size: 20px;
 }
