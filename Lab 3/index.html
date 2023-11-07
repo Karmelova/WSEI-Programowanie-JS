@@ -10,71 +10,83 @@
 
 <body>
     <h1>Drum Kit</h1>
-    <section class="channels-section">
-        <div>
-            
-            <button onclick="startRecordingChannel(0)">Channel 1</button>
-            <button onclick="startRecordingChannel(1)">Channel 2</button>
-            <button onclick="startRecordingChannel(2)">Channel 3</button>
-            <button onclick="startRecordingChannel(3)">Channel 4</button>
-        </div>
-        <div>
-            <button onclick="playRecordedChannel(0)">Play Channel 1</button>
-            <button onclick="playRecordedChannel(1)">Play Channel 2</button>
-            <button onclick="playRecordedChannel(2)">Play Channel 3</button>
-            <button onclick="playRecordedChannel(3)">Play Channel 4</button>
-            <button onclick="playAllRecordedChannels()">Play them all</button>
-        </div>
-    </section>
-    
-    
+
+
     <section class="drum-section">
         <div class="drum-key">
             <span class="key-button">A</span>
             <span class="sound">clap</span>
-            <audio src="./sounds/clap.wav" id="s1"></audio>
+            <audio src="./sounds/clap.wav" id="clap"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">S</span>
             <span class="sound">hithat</span>
-            <audio src="./sounds/hihat.wav" id="s2"></audio>
+            <audio src="./sounds/hihat.wav" id="hithat"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">D</span>
             <span class="sound">kick</span>
-            <audio src="./sounds/kick.wav" id="s3"></audio>
+            <audio src="./sounds/kick.wav" id="kick"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">F</span>
             <span class="sound">openhat</span>
-            <audio src="./sounds/openhat.wav" id="s4"></audio>
+            <audio src="./sounds/openhat.wav" id="openhat"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">G</span>
             <span class="sound">boom</span>
-            <audio src="./sounds/boom.wav" id="s5"></audio>
+            <audio src="./sounds/boom.wav" id="boom"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">H</span>
             <span class="sound">ride</span>
-            <audio src="./sounds/ride.wav" id="s6"></audio>
+            <audio src="./sounds/ride.wav" id="ride"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">J</span>
             <span class="sound">snare</span>
-            <audio src="./sounds/snare.wav" id="s7"></audio>
+            <audio src="./sounds/snare.wav" id="snare"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">K</span>
             <span class="sound">tom</span>
-            <audio src="./sounds/tom.wav" id="s8"></audio>
+            <audio src="./sounds/tom.wav" id="tom"></audio>
         </div>
         <div class="drum-key">
             <span class="key-button">L</span>
             <span class="sound">tink</span>
-            <audio src="./sounds/tink.wav" id="s9"></audio>
+            <audio src="./sounds/tink.wav" id="tink"></audio>
         </div>
     </section>
+    <div id="rec">
+        <button id="channel1Rec" onclick="recordChannel(1)">
+            <p1> REC1 </p1><br>
+        </button>
+        <button id="channel2Rec" onclick="recordChannel(2)">
+            <p1> REC2 </p1><br>
+        </button>
+        <button id="channel3Rec" onclick="recordChannel(3)">
+            <p1> REC3 </p1><br>
+        </button>
+        <button id="channel4Rec" onclick="recordChannel(4)">
+            <p1> REC4</p1><br>
+        </button>
+    </div>
+    <div id="play">
+        <button id="channel1Play" onclick="playChannel(1)">
+            <p1>Play 1</p1><br>
+        </button>
+        <button id="channel2Play" onclick="playChannel(2)">
+            <p1> Play 2</p1><br>
+        </button>
+        <button id="channel3Play" onclick="playChannel(3)">
+            <p1> Play 3</p1><br>
+        </button>
+        <button id="channel4Play" onclick="playChannel(4)">
+            <p1> Play 4</p1><br>
+        </button>
+    </div>
 
     <script src="drumkit.js"></script>
 </body>
