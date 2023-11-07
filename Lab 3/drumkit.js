@@ -7,7 +7,7 @@ const KeyToSound = {
   h: document.getElementById('ride'),
   j: document.getElementById('snare'),
   k: document.getElementById('tom'),
-  k: document.getElementById('tink')
+  l: document.getElementById('tink')
 }
 
 document.addEventListener('keydown', onKeyPress)
