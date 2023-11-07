@@ -52,9 +52,14 @@ function recordChannel (channelNumber) {
   if (channels[channelNumber - 1].length > 0) {
     channels[channelNumber - 1] = []
   }
+  const playElementId = `channel${channelNumber}Play`;
+  document.getElementById(playElementId).classList.add("hidden");
+  const recElementId = `channel${channelNumber}Rec`;
+  const icon = document.getElementById(recElementId).querySelector('.icon'); 
+  icon.classList.toggle("blink")
   setRecordingParams(channelNumber)
   setTimeout(() => {
-    stopRecording()
+    stopRecording(channelNumber)
   }, 5000)
 }
 
@@ -68,9 +73,13 @@ function setRecordingParams (channelNumber) {
   }
 }
 
-function stopRecording () {
+function stopRecording (channelNumber) {
   recordingChannel = undefined
-  console.log('Recording stopped')
+  const playElementId = `channel${channelNumber}Play`;
+  document.getElementById(playElementId).classList.remove("hidden");
+  const recElementId = `channel${channelNumber}Rec`;
+  const icon = document.getElementById(recElementId).querySelector('.icon'); 
+  icon.classList.toggle("blink")
 }
 function playChannel (channelNumber) {
   channels[channelNumber - 1].forEach(sound => {
@@ -83,3 +92,5 @@ function playSound (sound) {
   sound.currentTime = 0
   sound.play()
 }
+
+
