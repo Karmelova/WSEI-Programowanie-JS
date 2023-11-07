@@ -1,94 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS Drum Kit</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS Drum Kit</title>
+        <script src="https://kit.fontawesome.com/8c63231481.js"
+            crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<body>
-    <h1>Drum Kit</h1>
+    <body>
+        <h1>Drum Kit</h1>
+        <section class="container drumkit">
+            <div class="drum-key">
+                <span class="key-button">A</span>
+                <span class="sound">clap</span>
+                <audio src="./sounds/clap.wav" id="clap"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">S</span>
+                <span class="sound">hithat</span>
+                <audio src="./sounds/hihat.wav" id="hithat"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">D</span>
+                <span class="sound">kick</span>
+                <audio src="./sounds/kick.wav" id="kick"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">F</span>
+                <span class="sound">openhat</span>
+                <audio src="./sounds/openhat.wav" id="openhat"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">G</span>
+                <span class="sound">boom</span>
+                <audio src="./sounds/boom.wav" id="boom"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">H</span>
+                <span class="sound">ride</span>
+                <audio src="./sounds/ride.wav" id="ride"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">J</span>
+                <span class="sound">snare</span>
+                <audio src="./sounds/snare.wav" id="snare"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">K</span>
+                <span class="sound">tom</span>
+                <audio src="./sounds/tom.wav" id="tom"></audio>
+            </div>
+            <div class="drum-key">
+                <span class="key-button">L</span>
+                <span class="sound">tink</span>
+                <audio src="./sounds/tink.wav" id="tink"></audio>
+            </div>
+        </section>
 
+        <section class="container channels">
+            <div class="channel">
+                CHANNEL 1
+                <p class="controls">
+                    <button id="channel1Rec" onclick="recordChannel(1)">
+                        <i class=" icon record fa-solid fa-record-vinyl"></i>
+                    </button>
+                    <button id="channel1Play" onclick="playChannel(1)">
+                        <i class="fa-solid fa-circle-play icon play"></i>
+                    </button>
+                </p>
+            </div>
+            <div class="channel">
+                CHANNEL 2
+                <p class="controls">
+                    <button id="channel2Rec" onclick="recordChannel(2)">
+                        <i class=" icon record fa-solid fa-record-vinyl"></i>
+                    </button>
+                    <button id="channel2Play" onclick="playChannel(2)">
+                        <i class="fa-solid fa-circle-play icon play"></i>
+                    </button>
+                </p>
+            </div>
+            <div class="channel">
+                CHANNEL 3
+                <p class="controls">
+                    <button id="channel3Rec" onclick="recordChannel(3)">
 
-    <section class="drum-section">
-        <div class="drum-key">
-            <span class="key-button">A</span>
-            <span class="sound">clap</span>
-            <audio src="./sounds/clap.wav" id="clap"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">S</span>
-            <span class="sound">hithat</span>
-            <audio src="./sounds/hihat.wav" id="hithat"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">D</span>
-            <span class="sound">kick</span>
-            <audio src="./sounds/kick.wav" id="kick"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">F</span>
-            <span class="sound">openhat</span>
-            <audio src="./sounds/openhat.wav" id="openhat"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">G</span>
-            <span class="sound">boom</span>
-            <audio src="./sounds/boom.wav" id="boom"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">H</span>
-            <span class="sound">ride</span>
-            <audio src="./sounds/ride.wav" id="ride"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">J</span>
-            <span class="sound">snare</span>
-            <audio src="./sounds/snare.wav" id="snare"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">K</span>
-            <span class="sound">tom</span>
-            <audio src="./sounds/tom.wav" id="tom"></audio>
-        </div>
-        <div class="drum-key">
-            <span class="key-button">L</span>
-            <span class="sound">tink</span>
-            <audio src="./sounds/tink.wav" id="tink"></audio>
-        </div>
-    </section>
-    <div id="rec">
-        <button id="channel1Rec" onclick="recordChannel(1)">
-            <p1> REC1 </p1><br>
-        </button>
-        <button id="channel2Rec" onclick="recordChannel(2)">
-            <p1> REC2 </p1><br>
-        </button>
-        <button id="channel3Rec" onclick="recordChannel(3)">
-            <p1> REC3 </p1><br>
-        </button>
-        <button id="channel4Rec" onclick="recordChannel(4)">
-            <p1> REC4</p1><br>
-        </button>
-    </div>
-    <div id="play">
-        <button id="channel1Play" onclick="playChannel(1)">
-            <p1>Play 1</p1><br>
-        </button>
-        <button id="channel2Play" onclick="playChannel(2)">
-            <p1> Play 2</p1><br>
-        </button>
-        <button id="channel3Play" onclick="playChannel(3)">
-            <p1> Play 3</p1><br>
-        </button>
-        <button id="channel4Play" onclick="playChannel(4)">
-            <p1> Play 4</p1><br>
-        </button>
-    </div>
-
-    <script src="drumkit.js"></script>
-</body>
-
+                        <i class=" icon record fa-solid fa-record-vinyl"></i>
+                    </button>
+                    <button id="channel3Play" onclick="playChannel(3)">
+                        <i class="fa-solid fa-circle-play icon play"></i>
+                    </button>
+                </p>
+            </div>
+            <div class="channel">
+                CHANNEL 4
+                <p class="controls">
+                    <button id="channel4Rec" onclick="recordChannel(4)">
+                        <i class=" icon record fa-solid fa-record-vinyl"></i>
+                    </button>
+                    <button id="channel4Play" onclick="playChannel(4)">
+                        <i class="fa-solid fa-circle-play icon play"></i>
+                    </button>
+                </p>
+            </div>
+        </section>
+        <script src="drumkit.js"></script>
+    </body>
 </html>
