@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Tworzenie notatki</h2>
+    <label for="title">Tytuł:</label>
+    <input type="text" id="title">
+
+    <label for="content">Treść:</label>
+    <textarea id="content"></textarea>
+
+    <label for="color">Kolor:</label>
+    <input type="color" id="color" value="#ffffff">
+
+    <label for="pin">Przypnij:</label>
+    <input type="checkbox" id="pin">
+
+    <label for="tags">Tagi:</label>
+    <select id="tags" multiple></select>
+
+    <label for="reminder">Przypomnienie:</label>
+    <input type="datetime-local" id="reminder">
+
+    <label for="list">Lista wypunktowana:</label>
+    <textarea id="list"></textarea>
+
+    <button onclick="createNote()">Utwórz notatkę</button>
+  </div>
+  <h2>Lista notatek</h2>
+  <div id="notes-container"></div>
+    <script src="main.js"></script>
+</body>
+</html>
