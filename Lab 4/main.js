@@ -31,17 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
       // Ustawianie focusu na polu 'note-content'
       setTimeout(function () {
         const contentField = modal.querySelector('#note-content')
-          contentField.focus()
-      }, 100);
-    
+        contentField.focus()
+      }, 100)
+
       const exits = modal.querySelectorAll('.modal-exit')
       exits.forEach(function (exit) {
         exit.addEventListener('click', function (event) {
           event.preventDefault()
           modal.classList.remove('open')
-          tempNewNoteItem.removeAttribute('hidden')
-          createNote()
-          
         })
       })
     })
@@ -56,27 +53,24 @@ function createNote () {
   // const tags = document.getElementById('tags').value.split(',');
   //const reminder = document.getElementById('reminder').value
   // const list = document.getElementById('list').value.split('\n');
-  // const createdDate = new Date().toISOString()
+  const createdDate = new Date().toISOString()
 
   const note = {
     title,
     content,
-    color
+    color,
     //pin,
     //   tags,
     //reminder,
     //list,
-    //createdDate
+    createdDate
   }
 
   // Zapis notatki do localStorage
-  if(title.value != "" || content.value != ""){
+  if (title.value !== '' || content.value !== '') {
     saveNoteToLocalStorage(note)
-    document.getElementById('create-Note').reset();
     displayNotes()
   }
-
-  // Odświeżanie listy notatek
 }
 
 // Funkcja zapisująca notatkę do localStorage
@@ -102,24 +96,33 @@ function getSelectedColor () {
 
 // Funkcja wyświetlająca notatki na stronie
 function displayNotes () {
-  const notesContainer = document.getElementById('notes-container')
-  notesContainer.innerHTML = ''
-
   const notes = JSON.parse(localStorage.getItem('notes')) || []
+  if (notes != '') {
+    const notesContainer = document.getElementById('notes-table')
+    const tableHeaders = document.createElement('tr')
+    tableHeaders.innerHTML = `<tr>
+  <th><span class="material-symbols-outlined">
+  star
+  </span></th>
+  <th>Tytuł</th>
+  <th>Treść</th>
+  <th>Utworzono</th>
+</tr>
+  `
+    notesContainer.appendChild(tableHeaders)
 
-  notes.forEach(note => {
-    const noteElement = document.createElement('div')
-    noteElement.innerHTML = `
-        <h3>${note.title}</h3>
-        <p>${note.content}</p>
-        <p>Color: ${note.color}</p>
-        <p>Pin: ${note.pin ? 'Tak' : 'Nie'}</p>
-        <p>Reminder: ${note.reminder}</p>
-        <p>Created: ${new Date(note.createdDate).toLocaleString()}</p>
+    notes.forEach(note => {
+      const noteElement = document.createElement('tr')
+      noteElement.innerHTML = `
+        <td>Pin: ${note.pin ? 'Tak' : 'Nie'}</td>
+        <td>${note.title}</td>
+        <td>${note.content}</td>
+        <td>Created: ${new Date(note.createdDate).toLocaleString()}</td>
+        <td>Reminder: ${note.reminder}</td>
+        
       `
-    notesContainer.appendChild(noteElement)
-  })
+      notesContainer.appendChild(noteElement)
+      noteElement.addEventListener('click', () => alert("tutaj bedzie modal"));
+    })
+  }
 }
-
-
-

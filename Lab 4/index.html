@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notatki</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <main>
+    
     <section class="new-note">
       <a data-modal="modal-createNote">
         <textarea placeholder="Utwórz notatkę..."></textarea>
@@ -18,70 +20,60 @@
       <div class="modal" id="modal-createNote">
         <div class="modal-bg modal-exit"></div>
         <div class="modal-container" id="note-bg">
-          <form id="create-Note">
+          <form id="create-note">
             <input id="title" type="text" placeholder="Tytuł">
             <textarea id="note-content" placeholder="Utwórz notatkę..."></textarea>
-            <div class="color-list">
-              <input type="radio" name="color" id="none" value="#ffffff" checked>
-              <label for="none" class="color-label" data-value="#ffffff"></label>
-            
-              <input type="radio" name="color" id="coral" value="#faafa8">
-              <label for="coral" class="color-label"  data-value="#faafa8"></label>
-            
-              <input type="radio" name="color" id="peach" value="#f39f76">
-              <label for="peach" class="color-label"  data-value="#f39f76"></label>
-            
-              <input type="radio" name="color" id="lightyellow" value="#fff8b8">
-              <label for="lightyellow" class="color-label"  data-value="#fff8b8"></label>
-            
-              <input type="radio" name="color" id="pistachio" value="#e2f6d3">
-              <label for="pistachio" class="color-label"  data-value="#e2f6d3"></label>
-            
-              <input type="radio" name="color" id="mint" value="#b4ddd3">
-              <label for="mint" class="color-label"  data-value="#b4ddd3"></label>
-            
-              <input type="radio" name="color" id="lightblue" value="#d4e4ed">
-              <label for="lightblue" class="color-label"  data-value="#d4e4ed"></label>
-            
-              <input type="radio" name="color" id="blue" value="#aeccdc">
-              <label for="blue" class="color-label"  data-value="#aeccdc"></label>
-            
-              <input type="radio" name="color" id="thistle" value="#d3bfdb">
-              <label for="thistle" class="color-label"  data-value="#d3bfdb"></label>
-            
-              <input type="radio" name="color" id="palepink" value="#f6e2dd">
-              <label for="palepink" class="color-label"  data-value="#f6e2dd"></label>
-            
-              <input type="radio" name="color" id="whitecoffee" value="#e9e3d4">
-              <label for="whitecoffee" class="color-label"  data-value="#e9e3d4"></label>
-            
-              <input type="radio" name="color" id="gray" value="#d9d9da">
-              <label for="gray" class="color-label"  data-value="#d9d9da"></label>
+            <button onclick="createNote()">Utwórz notatkę</button>
+            <div style="background-color: white;">
+              <div class="color-list">
+                <input type="radio" name="color" id="none" value="#ffffff" checked>
+                <label for="none" class="color-label" data-value="#ffffff"></label>
+
+                <input type="radio" name="color" id="coral" value="#faafa8">
+                <label for="coral" class="color-label" data-value="#faafa8"></label>
+
+                <input type="radio" name="color" id="peach" value="#f39f76">
+                <label for="peach" class="color-label" data-value="#f39f76"></label>
+
+                <input type="radio" name="color" id="lightyellow" value="#fff8b8">
+                <label for="lightyellow" class="color-label" data-value="#fff8b8"></label>
+
+                <input type="radio" name="color" id="pistachio" value="#e2f6d3">
+                <label for="pistachio" class="color-label" data-value="#e2f6d3"></label>
+
+                <input type="radio" name="color" id="mint" value="#b4ddd3">
+                <label for="mint" class="color-label" data-value="#b4ddd3"></label>
+
+                <input type="radio" name="color" id="lightblue" value="#d4e4ed">
+                <label for="lightblue" class="color-label" data-value="#d4e4ed"></label>
+
+                <input type="radio" name="color" id="blue" value="#aeccdc">
+                <label for="blue" class="color-label" data-value="#aeccdc"></label>
+
+                <input type="radio" name="color" id="thistle" value="#d3bfdb">
+                <label for="thistle" class="color-label" data-value="#d3bfdb"></label>
+
+                <input type="radio" name="color" id="palepink" value="#f6e2dd">
+                <label for="palepink" class="color-label" data-value="#f6e2dd"></label>
+
+                <input type="radio" name="color" id="whitecoffee" value="#e9e3d4">
+                <label for="whitecoffee" class="color-label" data-value="#e9e3d4"></label>
+
+                <input type="radio" name="color" id="gray" value="#d9d9da">
+                <label for="gray" class="color-label" data-value="#d9d9da"></label>
+                
+              </div>
             </div>
+
           </form>
         </div>
       </div>
 
     </section>
     <section class="display-note">
-      <div id="notes-container"></div>
+      <table id="notes-table"></table>
     </section>
-
-
   </main>
-  
-
-  <select id="tags" multiple></select>
-  <label for="tags">Tagi:</label>
-
-  <input type="datetime-local" id="reminder">
-  <label for="reminder">Przypomnienie:</label>
-
-  <button onclick="createNote()">Utwórz notatkę</button>
-
-  </div>
-  <h2>Lista notatek</h2>
-  
   <script src="main.js"></script>
 </body>
 
