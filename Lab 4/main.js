@@ -1,5 +1,3 @@
-
-
 displayNotes()
 //ustaw kolory w modalu
 const colorLabels = document.querySelectorAll('.color-label')
@@ -10,38 +8,43 @@ colorLabels.forEach(label => {
   label.style.backgroundColor = value
 })
 
-
-
 function openModal (index) {
   const modal = document.getElementById('noteModal')
   modal.classList.add('open')
-  setModalBackgroundColor()
-    const notes = JSON.parse(localStorage.getItem('notes')) || [];
-    const title = document.getElementById('title')
-    const content = document.getElementById('note-content')
-    const color = getSelectedColor()
-    const starred = document.getElementById('star')
-    // const tags = document.getElementById('tags').value.split(',');
-    //const reminder = document.getElementById('reminder').value
-    // const list = document.getElementById('list').value.split('\n');
-    const createdDate = new Date().toISOString()
-    const form = document.getElementById('noteForm')
-    title.value=notes[index].title;
-    content.value=notes[index].content;
-    color.value=notes[index].color
-    starred.value=notes[index].starred
-  
-  
+  const form = document.getElementById('noteForm')
+  form.reset()
+
+  const notes = JSON.parse(localStorage.getItem('notes')) || []
+  const title = document.getElementById('title')
+  const content = document.getElementById('note-content')
+  const color = getSelectedColor()
+  const starred = document.getElementById('star')
+  const binIcon = document.getElementById('binIcon')
+  binIcon.style.display = 'none'
+  const createdDate = new Date().toISOString()
   
   // Ustawianie focusu na polu 'note-content'
   setTimeout(function () {
     const contentField = modal.querySelector('#note-content')
     contentField.focus()
   }, 100)
-
+  
+  //jeżeli istnieje index ustaw dane formularza
+  if (index!= undefined) {
+    binIcon.style.display = 'flex';
+    title.value = notes[index].title
+    content.value = notes[index].content
+    setSavedColor(notes[index].color)
+    notes[index].starred == true ? starred.checked = true : starred.checked = false
+    updateStarIcon()
+    createdDate.value = notes[index].createdDate
+  }
+  setModalBackgroundColor()
   const exits = modal.querySelectorAll('.modal-exit')
   exits.forEach(function (exit) {
     exit.addEventListener('click', closeModal)
+    const colorsBar = document.getElementById('color-list')
+colorsBar.style.display == 'none' ? {} : colorsBar.style.display = 'none'
   })
 }
 
@@ -57,30 +60,52 @@ function closeModal (event) {
     exit.removeEventListener('click', closeModal)
   })
 }
+
 function setModalBackgroundColor () {
-  const radioButtons = document.querySelectorAll(
-    'input[type="radio"][name="color"]'
-  )
   const noteBgColor = document.querySelector('.modal-container')
-  
-  radioButtons.forEach(function (radioButton) {
-    radioButton.addEventListener('change', function () {
-      const colorValue = radioButton.value
-      noteBgColor.style.backgroundColor = colorValue
-    })
+  const initialColor = document.querySelector('input[type="radio"][name="color"]:checked').value;
+  noteBgColor.style.backgroundColor = initialColor;
+  const radioButtons = document.querySelectorAll(
+  'input[type="radio"][name="color"]'
+)
+
+
+radioButtons.forEach(function (radioButton) {
+  radioButton.addEventListener('change', function () {
+    const colorValue = radioButton.value
+    noteBgColor.style.backgroundColor = colorValue
   })
+})
 }
 
 document.addEventListener('DOMContentLoaded', function () {})
+function getSelectedColor () {
+  const colorOptions = document.getElementsByName('color')
+  let selectedColor = null
 
+  for (const option of colorOptions) {
+    if (option.checked) {
+      selectedColor = option.value
+      break
+    }
+  }
+
+  return selectedColor
+}
+function setSavedColor(savedColor){
+  const colorOptions = document.getElementsByName('color')
+  for (const option of colorOptions) {
+    if (option.value == savedColor) {
+      option.checked =true;
+      break
+    }
+  }
+}
 function createNote () {
   const title = document.getElementById('title').value
   const content = document.getElementById('note-content').value
   const color = getSelectedColor()
   const starred = document.getElementById('star').checked
-  // const tags = document.getElementById('tags').value.split(',');
-  //const reminder = document.getElementById('reminder').value
-  // const list = document.getElementById('list').value.split('\n');
   const createdDate = new Date().toISOString()
   const form = document.getElementById('noteForm')
   const note = {
@@ -88,9 +113,6 @@ function createNote () {
     content,
     color,
     starred,
-    //   tags,
-    //reminder,
-    //list,
     createdDate
   }
 
@@ -176,6 +198,10 @@ function displayNotes () {
 
 const checkbox = document.getElementById('star')
 const starIcon = document.getElementById('starIcon')
+const palleteIcon = document.getElementById('palleteIcon')
+
+
+const colorsBar = document.getElementById('color-list')
 
 function updateStarIcon () {
   if (checkbox.checked) {
@@ -191,7 +217,9 @@ starIcon.addEventListener('click', function () {
   checkbox.checked = !checkbox.checked
   updateStarIcon()
 })
-
+palleteIcon.addEventListener('click', function (){
+  colorsBar.style.display == 'none' ? colorsBar.style.display = 'flex' : colorsBar.style.display = 'none';
+})
 const adjustTextareaHeight = function () {
   const numberOfLines = this.value.split('\n').length
   const maxLines = 6
