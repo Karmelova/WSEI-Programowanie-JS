@@ -175,6 +175,26 @@ function saveNote() {
     form.reset();
   }
 }
+function deleteNote(index) {
+  const notes = JSON.parse(localStorage.getItem('notes')) || [];
+console.log(index)
+
+    // Remove the note at the specified index
+    notes.splice(index,1);
+
+   notes.sort((a, b) => {
+      if (a.starred - b.starred !== 0) {
+       return b.starred - a.starred;
+     }
+     return new Date(b.createdDate) - new Date(a.createdDate);
+    });
+    localStorage.setItem('notes', JSON.stringify(notes));
+    
+  const form = document.getElementById('noteForm');
+form.reset()
+    closeModal();
+    displayNotes();
+}
 
 // Function to save note to localStorage
 function saveNoteToLocalStorage(note) {
@@ -223,3 +243,6 @@ const adjustTextareaHeight = function () {
 document.querySelectorAll('.auto-resize-textarea').forEach(textarea => {
   textarea.addEventListener('input', adjustTextareaHeight);
 });
+
+
+binIcon.addEventListener('click', () => deleteNote(indexOfNoteEdited));
