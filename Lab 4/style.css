@@ -9,6 +9,11 @@ main {
     width: 100%;
     overflow: hidden;
 }
+a{
+    border: 1px solid black;
+    min-width: 50%;
+    margin: 40px;
+}
 hr{
     opacity: 20%;
 }
