@@ -109,6 +109,12 @@ td{
 td:nth-child(3){
     text-align: left;
 }
+td:first-child{
+   width: 30px;
+}
+td:last-child{
+    width: 100px;
+ }
 .modal {
     position: fixed;
     width: 100%;
