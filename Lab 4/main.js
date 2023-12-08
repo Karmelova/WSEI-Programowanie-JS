@@ -237,7 +237,7 @@ const adjustTextareaHeight = function () {
   const maxLines = 6;
 
   this.style.overflowY = numberOfLines > maxLines ? 'scroll' : 'hidden';
-  this.style.height = `${Math.min(maxLines, numberOfLines) * 20}px`;
+  this.style.height = `${(Math.min(maxLines, numberOfLines) * 20)+20}px`;
 };
 
 document.querySelectorAll('.auto-resize-textarea').forEach(textarea => {
