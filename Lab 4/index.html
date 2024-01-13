@@ -1,38 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notatki</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h2>Tworzenie notatki</h2>
-    <label for="title">Tytuł:</label>
-    <input type="text" id="title">
+  <main>
 
-    <label for="content">Treść:</label>
-    <textarea id="content"></textarea>
+    <section class="new-note">
+      <a onclick="openModal()">
+        Utwórz notatkę...
+      </a>
 
-    <label for="color">Kolor:</label>
-    <input type="color" id="color" value="#ffffff">
+    </section>
+    <section class="display-note">
+      <table id="notes-table"></table>
+    </section>
+    <section class="modal" id="noteModal">
+      <div class="modal-bg modal-exit"></div>
+      <div class="modal-container">
+        <form id="noteForm">
+          <input id="title" type="text" placeholder="Tytuł" spellcheck="false">
+          <hr>
+          <textarea id="note-content" class="auto-resize-textarea" placeholder="Utwórz notatkę..."
+            spellcheck="false"></textarea>
+          <div class="controls">
+            <input type="checkbox" id="star" hidden>
+            <span id="starIcon" class="material-symbols-outlined">
+              star
+            </span>
+            <span id="palleteIcon" class="material-symbols-outlined">
+              palette
+            </span>
+            <span id="binIcon" class="material-symbols-outlined">
+              delete
+            </span>
+          </div>
 
-    <label for="pin">Przypnij:</label>
-    <input type="checkbox" id="pin">
+          <div id="color-list">
+            <input type="radio" name="color" id="none" value="#ffffff" checked>
+            <label for="none" class="color-label" data-value="#ffffff"></label>
 
-    <label for="tags">Tagi:</label>
-    <select id="tags" multiple></select>
+            <input type="radio" name="color" id="coral" value="#faafa8">
+            <label for="coral" class="color-label" data-value="#faafa8"></label>
 
-    <label for="reminder">Przypomnienie:</label>
-    <input type="datetime-local" id="reminder">
+            <input type="radio" name="color" id="peach" value="#f39f76">
+            <label for="peach" class="color-label" data-value="#f39f76"></label>
 
-    <label for="list">Lista wypunktowana:</label>
-    <textarea id="list"></textarea>
+            <input type="radio" name="color" id="lightyellow" value="#fff8b8">
+            <label for="lightyellow" class="color-label" data-value="#fff8b8"></label>
 
-    <button onclick="createNote()">Utwórz notatkę</button>
-  </div>
-  <h2>Lista notatek</h2>
-  <div id="notes-container"></div>
-    <script src="main.js"></script>
+            <input type="radio" name="color" id="pistachio" value="#e2f6d3">
+            <label for="pistachio" class="color-label" data-value="#e2f6d3"></label>
+
+            <input type="radio" name="color" id="mint" value="#b4ddd3">
+            <label for="mint" class="color-label" data-value="#b4ddd3"></label>
+
+            <input type="radio" name="color" id="lightblue" value="#d4e4ed">
+            <label for="lightblue" class="color-label" data-value="#d4e4ed"></label>
+
+            <input type="radio" name="color" id="blue" value="#aeccdc">
+            <label for="blue" class="color-label" data-value="#aeccdc"></label>
+
+            <input type="radio" name="color" id="thistle" value="#d3bfdb">
+            <label for="thistle" class="color-label" data-value="#d3bfdb"></label>
+
+            <input type="radio" name="color" id="palepink" value="#f6e2dd">
+            <label for="palepink" class="color-label" data-value="#f6e2dd"></label>
+
+            <input type="radio" name="color" id="whitecoffee" value="#e9e3d4">
+            <label for="whitecoffee" class="color-label" data-value="#e9e3d4"></label>
+
+            <input type="radio" name="color" id="gray" value="#d9d9da">
+            <label for="gray" class="color-label" data-value="#d9d9da"></label>
+          </div>
+
+        </form>
+      </div>
+  </main>
+  <script src="./main.js"></script>
 </body>
+
 </html>
