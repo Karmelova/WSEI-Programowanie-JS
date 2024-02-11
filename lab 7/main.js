@@ -36,11 +36,11 @@ async function fetchWeather (city) {
   try {
     const response = await fetch(url)
     if (!response.ok) {
-      return false // Indicate failure if response is not ok
+      return false 
     }
     const data = await response.json()
 
-    // Let's destructure the data object
+    // Destructure the data object
     const { main, name, sys, weather, wind } = data
 
     // Define the icon location
@@ -70,19 +70,16 @@ async function fetchWeather (city) {
     </div>
         `
 
-    // Add the new markup to the list item
     li.innerHTML = markup
 
-    // Create and add delete button
     const deleteBtn = createDeleteButton(name)
     li.appendChild(deleteBtn)
 
-    // Add the new list item to the page
     list.appendChild(li)
 
-    return true // Indicate success
+    return true
   } catch (error) {
-    throw error // Propagate any error
+    throw error
   }
 }
 
